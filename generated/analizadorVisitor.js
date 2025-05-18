@@ -1,4 +1,4 @@
-// Generated from c:/Users/laura/OneDrive/Escritorio/analizador/52167/analizador.g4 by ANTLR 4.13.2
+// Generated from c:/Users/laura/OneDrive/Escritorio/52167/analizador.g4 by ANTLR 4.13.2
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
