@@ -1,0 +1,92 @@
+gramática que me toco (en EBNF):
+
+<configuración> ::= "configuración"<nombre>"{"<secciones>"}"
+<secciones> ::= {<sección>}
+<sección> ::= "sección"<nombre>"{"<parametros>"}"
+<parámetros> ::= {<parámetro>}
+<parámetro> ::= <nombre>"="<valor>";"
+<valor> ::= <número>|<cadena>|<booleano>
+<número> ::= <dígito>{<dígito>}
+<cadena> ::= ""{<carácter>}""
+<booleano> ::= "verdadero"|"falso"
+<nombre> ::= <letra>{<letra>|<dígito>}
+<carácter> ::= <letra>|<dígito>|" "|<símbolo>
+<letra> ::= "a"|"b"|...|"z"|"A"|"B"|...|"Z"
+<dígito> ::= "0"|"1"|"2"|"3"|"4"|"5"|"6"|"7"|"8"|"9"
+<símbolo> ::= "."|","|"!"|"?"|":"|";"|""
+
+gramática ya traducida:
+
+grammar analizador;
+
+configuracion
+    : 'configuración' nombre '{' secciones '}'
+    ;
+
+secciones
+    : seccion*
+    ;
+
+seccion
+    : 'sección' nombre '{' parametros '}'
+    ;
+
+parametros
+    : parametro*
+    ;
+
+parametro
+    : nombre '=' valor ';'
+    ;
+
+valor
+    : numero
+    | CADENA
+    | booleano
+    ;
+
+numero
+    : DIGITO+
+    ;
+
+cadena
+    : '"' caracter* '"'
+    ;
+
+caracter
+    : LETRA
+    | DIGITO
+    | SIMBOLO
+    ;
+
+booleano
+    : 'verdadero'
+    | 'falso'
+    ;
+
+nombre
+    : NOMBRE
+    ;
+
+NOMBRE : [a-zA-Z][a-zA-Z0-9]* ;
+
+DIGITO : [0-9] ;
+
+LETRA : [a-zA-Z] ;
+
+CADENA : '"' (~["\r\n])* '"' ;
+
+SIMBOLO
+    : ','
+    | '!'
+    | '?'
+    | ';'
+    | ':'
+    | '\''
+    ;
+
+WS
+    : [ \t\r\n]+ -> skip
+    ;
+
+
