@@ -1,0 +1,14 @@
+ejemplo 3 (correcto):
+
+configuración ejemplo {
+    sección datos {
+        nombre = "Juan";
+        edad = 25;
+        activo = verdadero;
+    }
+    sección preferencias {
+        color = "azul";
+        notificaciones = falso;
+    }
+}
+
